@@ -59,11 +59,11 @@ then
            fi
 	done
 	
-	# az összmeret alapjan sorbarendezzuk oket, majd kivalasztjuk az 5 legnagyobbat
+	# az összmeret alapjan sorbarendezzuk oket, majd kivalasztjuk az 50 legnagyobbat
 	for i in "${!senders[@]}"
 	do
-	    echo $i ${senders["$i"]};
-	done | 	sort -rn -k2 | head -5 
+	    echo $i "${senders["$i"]} kbyte";
+	done | 	sort -rn -k2 | head -50 
 #-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
    fi
 else
