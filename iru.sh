@@ -62,8 +62,8 @@ then
 	# az összmeret alapjan sorbarendezzuk oket, majd kivalasztjuk az 50 legnagyobbat
 	for i in "${!senders[@]}"
 	do
-	    echo $i "${senders["$i"]} kbyte";
-	done | 	sort -rn -k2 | head -50 
+	    echo $i "${senders["$i"]}" ;
+	done | 	sort -rn -k2 | head -50 | column -t #| awk '{print $25"\t\t" $15"\t"}' | column -t
 #-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
    fi
 else
