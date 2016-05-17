@@ -13,7 +13,7 @@
 MAIL_FOLDER="/home/sweidan/.local/share/evolution/mail/local/cur"
 
 #ha letezik a folder -> belepunk
-if [ -d "$MAIL_FOLDER" ]
+if [ -d "$MAIL_FOLDER" ];
 then
     echo "Bent vagyok a mail folderben"
     # megszamoljuk, hany darab level van
