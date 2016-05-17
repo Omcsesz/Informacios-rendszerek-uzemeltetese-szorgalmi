@@ -2,7 +2,7 @@
 
 #**************************************#
 #               iru.sh                 #
-#            Email top 5 lister        #
+#         Email top 50 lister          #
 #       written by Omar Sweidan	       #
 #            May 17, 2016              #
 #				       # 
@@ -45,11 +45,11 @@ then
 	   SIZE=$(($SIZE/1024)) # meret kilobyteban
 
 	   # ha tartalmaz kuldo mezot az adott fajl, akkor felvesszuk a levelek koze
-	   if [ -n "$SENDER" ] 
+	   if [ -n "$SENDER" ];
 	   then 
 
 		# ha egy már letezo feladoval van dolgunk, akkor megnoveljuk a level meretevel az osszmeretet
-		if [ ${senders[$SENDER]} ] 
+		if [ ${senders[$SENDER]} ]; 
 		then
 	  	     senders[$SENDER]=$((${senders[$SENDER]}+$SIZE))
 		# egyebkent
@@ -63,7 +63,7 @@ then
 	for i in "${!senders[@]}"
 	do
 	    echo $i "${senders["$i"]}" ;
-	done | 	sort -rn -k2 | head -50 | column -t #| awk '{print $25"\t\t" $15"\t"}' | column -t
+	done | 	sort -rn -k2 | head -50 | column -t
 #-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
    fi
 else
