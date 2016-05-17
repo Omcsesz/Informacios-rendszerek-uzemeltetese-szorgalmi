@@ -2,7 +2,7 @@
 
 #**************************************#
 #               iru.sh                 #
-#            Email top 5               #
+#            Email top 5 lister        #
 #       written by Omar Sweidan	       #
 #            May 17, 2016              #
 #				       # 
@@ -15,24 +15,18 @@ MAIL_FOLDER="/home/sweidan/.local/share/evolution/mail/local/cur"
 #ha letezik a folder -> belepunk
 if [ -d "$MAIL_FOLDER" ]
 then
-    #echo "Bent vagyok a mail folderben"
-    
+    echo "Bent vagyok a mail folderben"
+    # megszamoljuk, hany darab level van
     NUMBER_OF_MAILS=$( ls -l $MAIL_FOLDER | wc -l )
     
     #ha vannak levelek, megkezdjuk a feldolgozast
-    if [ NUMBER_OF_MAILS == 0 ]   
+    if [ $NUMBER_OF_MAILS -eq  0 ];  
     then
 	echo "Nincsenek levelek"
     else
-	#megszamoljuk, hany kuldo van
-	#declare	-i NUMBER_OF_SENDERS #letrehozzuk a szamlalot
-	#NUMBER_OF_SENDERS=0 	     #inicializalas
 	
 	# letrehozunk egy tombot a kuldoknek
 	declare -A senders # -A: array
-        
-	# letrehozzuk a meretek tombjet
-        #declare -A sizes   # -A: array
 	
 	# vegigmegyunk a MAIL_FOLDER tartalman
 	for file in $MAIL_FOLDER/*
@@ -53,20 +47,14 @@ then
 	   # ha tartalmaz kuldo mezot az adott fajl, akkor felvesszuk a levelek koze
 	   if [ -n "$SENDER" ] 
 	   then 
-#		echo "sender: $SENDER"		
-#		echo "size: $SIZE kb"
-#		echo "-------------------------------------"
+
 		# ha egy már letezo feladoval van dolgunk, akkor megnoveljuk a level meretevel az osszmeretet
 		if [ ${senders[$SENDER]} ] 
 		then
-		 #    echo "exists"
 	  	     senders[$SENDER]=$((${senders[$SENDER]}+$SIZE))
-   		  #   echo "senders[$SENDER]: ${senders[$SENDER]}"
 		# egyebkent
 		else
-		   #  echo "doesn't exist"
 		     senders[$SENDER]=$SIZE
-   		    # echo "senders[$SENDER]: ${senders[$SENDER]}"
 		fi
            fi
 	done
@@ -77,9 +65,7 @@ then
 	    echo $i ${senders["$i"]};
 	done | 	sort -rn -k2 | head -5 
 #-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
-#	echo "NUMBER_OF_SENDERS: $NUMBER_OF_SENDERS"
    fi
 else
     echo "Nem vagyok a mail_folderben"
 fi
-
