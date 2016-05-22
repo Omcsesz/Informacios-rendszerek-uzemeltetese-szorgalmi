@@ -64,7 +64,7 @@ then
 	do
 	    echo $i "${senders["$i"]}" ;
 	done | 	sort -rn -k2 | head -50 | column -t
-#-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
+	#-r: reverse, -n: numerically, -k2: a masodik oszlop ertekei szerint 
    fi
 else
     echo "Nem vagyok a mail_folderben"
