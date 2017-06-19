@@ -4,3 +4,8 @@ Az információs rendszerek üzemeltetése tárgy S7 jelű szorgalmi feladata. (
 
 A feladatkiírás:
 S7. Készítsen scriptet, amely a mail folderében lévő levelek küldő mezője alapján statisztikát készít, és listázza a legnagyobb összméretű leveleket generáló top50 küldőt. 
+
+
+#Management-of-Information-Systems-voluntary-homework-assignment
+
+Description: write a script that lists the top50 email senders according to the overall size of emails they sent.
